@@ -15,11 +15,14 @@ var express     = require("express"),
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
+console.log(process.env.DATABASEURL);
+// Use native promises
+mongoose.Promise = global.Promise;
 
-//mongoose.connect("mongodb://localhost/yelp_camp_v12.1");
+//mongoose.connect(process.env.DATABASEURL);
 //mongoose.connect("mongodb://pk214:pk214@ds119524.mlab.com:19524/darkk");
 
-const databaseUri = 'mongodb://pk214:pk214@ds119524.mlab.com:19524/darkk';
+const databaseUri =process.env.DATABASEURL;
 mongoose.connect(databaseUri, { useMongoClient: true })
       .then(() => console.log(`Database connected`))
       .catch(err => console.log(`Database connection error: ${err.message}`));
