@@ -18,11 +18,12 @@ var commentRoutes    = require("./routes/comments"),
 console.log(process.env.DATABASEURL);
 // Use native promises
 mongoose.Promise = global.Promise;
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v1deployed";
 
 //mongoose.connect(process.env.DATABASEURL);
 //mongoose.connect("mongodb://pk214:pk214@ds119524.mlab.com:19524/darkk");
 
-const databaseUri =process.env.DATABASEURL;
+const databaseUri =url;
 mongoose.connect(databaseUri, { useMongoClient: true })
       .then(() => console.log(`Database connected`))
       .catch(err => console.log(`Database connection error: ${err.message}`));
