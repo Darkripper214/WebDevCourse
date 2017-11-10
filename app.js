@@ -10,7 +10,7 @@ var express     = require("express"),
     User        = require("./models/user"),
     seedDB      = require("./seeds"),
     flash       = require("connect-flash")
-
+// upload
 //requiring routes
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
